@@ -2,8 +2,8 @@ plugins {
     id 'com.android.application'
     id 'org.jetbrains.kotlin.android'
     id 'kotlin-kapt'
+    id 'androidx.navigation.safeargs.kotlin'
     id 'com.google.dagger.hilt.android'
-//    id 'androidx.navigation.safeargs.kotlin' version '2.5.2' apply true
 }
 
 android {
@@ -45,7 +45,6 @@ dependencies {
     def nav_version = "2.5.2"
     implementation "androidx.navigation:navigation-fragment-ktx:$nav_version"
     implementation "androidx.navigation:navigation-ui-ktx:$nav_version"
-//    implementation "androidx.navigation:navigation-safe-args-gradle-plugin:$nav_version"
 
 
     def lifecycle_version = "2.5.0-alpha02"

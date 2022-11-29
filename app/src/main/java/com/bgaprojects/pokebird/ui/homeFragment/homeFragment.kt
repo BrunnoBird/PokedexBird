@@ -1,6 +1,5 @@
-package com.bgaprojects.pokebird.ui.HomeFragment
+package com.bgaprojects.pokebird.ui.homeFragment
 
-import android.opengl.Visibility
 import android.os.Bundle
 import android.text.Editable
 import android.text.TextWatcher
@@ -9,24 +8,20 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import androidx.appcompat.app.AppCompatActivity
-import androidx.core.widget.addTextChangedListener
 import androidx.fragment.app.viewModels
 import androidx.lifecycle.lifecycleScope
 import androidx.navigation.fragment.findNavController
 import androidx.recyclerview.widget.GridLayoutManager
-import androidx.recyclerview.widget.LinearLayoutManager
-import com.bgaprojects.pokebird.databinding.FragmentDetailsBinding
 import com.bgaprojects.pokebird.databinding.FragmentHomeBinding
 import com.bgaprojects.pokebird.ui.adapter.PokemonAdapter
 import com.bgaprojects.pokebird.ui.base.BaseFragment
-import com.bgaprojects.pokebird.ui.detailsFragment.DetailsFragment
 import com.bgaprojects.pokebird.ui.state.ResourceState
 import dagger.hilt.android.AndroidEntryPoint
 import kotlinx.coroutines.launch
 
 @AndroidEntryPoint
-class HomeFragment : BaseFragment<FragmentHomeBinding, HomeViewModel>() {
-    override val viewModel: HomeViewModel by viewModels()
+class homeFragment : BaseFragment<FragmentHomeBinding, homeViewModel>() {
+    override val viewModel: homeViewModel by viewModels()
     private val pokemonAdapter by lazy { PokemonAdapter() }
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
@@ -61,8 +56,8 @@ class HomeFragment : BaseFragment<FragmentHomeBinding, HomeViewModel>() {
 
     private fun clickAdapter() {
         pokemonAdapter.setOnClickListener { pokemonModel ->
-//            val action = HomeFragmentDirections.actionHomeFragmentToDetailsFragment(pokemonModel)
-//            findNavController().navigate(action)
+            val action = homeFragmentDirections.actionHomeFragmentToDetailsFragment(pokemonModel)
+            findNavController().navigate(action)
         }
     }
 
@@ -97,6 +92,8 @@ class HomeFragment : BaseFragment<FragmentHomeBinding, HomeViewModel>() {
             }
         }
     }
+
+
 
     override fun getViewBinding(
         inflater: LayoutInflater,

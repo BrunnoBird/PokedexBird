@@ -42,5 +42,4 @@ object Module {
         return retrofit.create(ServiceApi::class.java)
     }
 
-
 }

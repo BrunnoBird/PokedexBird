@@ -1,13 +1,7 @@
 package com.bgaprojects.pokebird.ui.activity
 
-import android.content.Context
-import android.content.res.ColorStateList
-import android.graphics.drawable.Drawable
 import android.os.Bundle
-import android.util.Log
-import android.view.MenuItem
 import androidx.appcompat.app.AppCompatActivity
-import androidx.core.content.ContextCompat
 import androidx.navigation.fragment.NavHostFragment
 import androidx.navigation.ui.onNavDestinationSelected
 import androidx.navigation.ui.setupWithNavController
@@ -24,7 +18,6 @@ class MainActivity : AppCompatActivity() {
         super.onCreate(savedInstanceState)
         binding = ActivityMainBinding.inflate(layoutInflater)
         setContentView(binding.root)
-
         initViews(binding)
     }
 
@@ -32,12 +25,15 @@ class MainActivity : AppCompatActivity() {
         navHostFragment =
             supportFragmentManager.findFragmentById(R.id.fragmentContainerView) as NavHostFragment
         val navController = navHostFragment.navController
+
         binding.bottomNavigation.apply {
             setupWithNavController(navController)
             setOnItemSelectedListener {
+                if (it.toString() == "Home") {
+                    navController.navigate(it.itemId)
+                }
                 it.onNavDestinationSelected(navController)
             }
         }
-        binding.bottomNavigation.itemIconTintList = null
     }
 }

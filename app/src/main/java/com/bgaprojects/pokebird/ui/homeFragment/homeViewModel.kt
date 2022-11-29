@@ -1,4 +1,4 @@
-package com.bgaprojects.pokebird.ui.HomeFragment
+package com.bgaprojects.pokebird.ui.homeFragment
 
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
@@ -16,7 +16,7 @@ import java.io.IOException
 import javax.inject.Inject
 
 @HiltViewModel
-class HomeViewModel @Inject constructor(
+class homeViewModel @Inject constructor(
     private val repository: PokemonRepository
 ) : ViewModel() {
 

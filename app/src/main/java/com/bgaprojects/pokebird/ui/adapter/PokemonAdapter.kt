@@ -60,7 +60,7 @@ class PokemonAdapter(
                 if (it.isLowerCase()) it.titlecase(Locale.getDefault()) else it.toString()
             }
             if (pokemon.types.size >= 2) {
-                tvTypesPokemonSecondary.text = (pokemon.types[1]?.type?.name?.replaceFirstChar {
+                tvTypesPokemonSecondary.text = (pokemon.types[1].type.name.replaceFirstChar {
                     if (it.isLowerCase()) it.titlecase(Locale.getDefault()) else it.toString()
                 })
             }
