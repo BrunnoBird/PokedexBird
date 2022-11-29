@@ -3,7 +3,6 @@ package com.bgaprojects.pokebird.ui.homeFragment
 import android.os.Bundle
 import android.text.Editable
 import android.text.TextWatcher
-import android.util.Log
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
@@ -20,8 +19,8 @@ import dagger.hilt.android.AndroidEntryPoint
 import kotlinx.coroutines.launch
 
 @AndroidEntryPoint
-class homeFragment : BaseFragment<FragmentHomeBinding, homeViewModel>() {
-    override val viewModel: homeViewModel by viewModels()
+class HomeFragment : BaseFragment<FragmentHomeBinding, HomeViewModel>() {
+    override val viewModel: HomeViewModel by viewModels()
     private val pokemonAdapter by lazy { PokemonAdapter() }
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
@@ -56,7 +55,7 @@ class homeFragment : BaseFragment<FragmentHomeBinding, homeViewModel>() {
 
     private fun clickAdapter() {
         pokemonAdapter.setOnClickListener { pokemonModel ->
-            val action = homeFragmentDirections.actionHomeFragmentToDetailsFragment(pokemonModel)
+            val action = HomeFragmentDirections.actionHomeFragmentToDetailsFragment(pokemonModel)
             findNavController().navigate(action)
         }
     }
@@ -70,7 +69,7 @@ class homeFragment : BaseFragment<FragmentHomeBinding, homeViewModel>() {
 
     private fun collectObserver() = lifecycleScope.launch {
         binding.loadingLottie.visibility = View.VISIBLE
-        viewModel.list.collect { resources ->
+        viewModel.pokemonsListState.collect { resources ->
             when (resources) {
                 is ResourceState.Success -> {
                     resources.data?.let { values ->
@@ -92,7 +91,6 @@ class homeFragment : BaseFragment<FragmentHomeBinding, homeViewModel>() {
             }
         }
     }
-
 
 
     override fun getViewBinding(

@@ -9,7 +9,7 @@ import javax.inject.Inject
 class PokemonRepository @Inject constructor(
     private val api: ServiceApi
 ) {
-    suspend fun list(): Response<PokemonListResultModel> = api.getPokemonList(10)
-    suspend fun listInfo(pokemonId: Long): Response<PokemonResultModel> =
+    suspend fun listPokemons(): Response<PokemonListResultModel> = api.getPokemonList(10)
+    suspend fun getPokemonsDetails(pokemonId: Long): Response<PokemonResultModel> =
         api.getPokemonInfo(pokemonId)
 }

@@ -4,14 +4,16 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:background="@color/red"
+    android:background="@color/yellow_dark"
     android:padding="8dp">
 
     <androidx.cardview.widget.CardView
         android:id="@+id/cvPokemonDetails"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        app:cardBackgroundColor="@android:color/transparent"
+        android:layout_marginTop="16dp"
+        app:cardBackgroundColor="@color/off_white"
+        app:cardCornerRadius="8dp"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent">
@@ -38,17 +40,20 @@
                 android:layout_height="wrap_content"
                 android:layout_marginHorizontal="4dp"
                 android:text="ID:"
-                android:textColor="@color/off_white"
-                android:textSize="16sp"
+                android:textColor="@color/black"
+                android:textSize="18sp"
                 android:textStyle="bold"
+                app:layout_constraintBottom_toTopOf="@+id/tvLabelWeigthPokemonDetails"
                 app:layout_constraintStart_toEndOf="@+id/ivPokemonDetails"
-                app:layout_constraintTop_toTopOf="parent" />
+                app:layout_constraintTop_toTopOf="parent"
+                app:layout_constraintVertical_chainStyle="packed" />
 
             <TextView
                 android:id="@+id/tvIdPokemonDetails"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:textColor="@color/off_white"
+                android:layout_marginStart="4dp"
+                android:textColor="@color/black"
                 android:textSize="16sp"
                 app:layout_constraintBottom_toBottomOf="@+id/tvLabelIdPokemonDetails"
                 app:layout_constraintStart_toEndOf="@+id/tvLabelIdPokemonDetails"
@@ -61,8 +66,10 @@
                 android:layout_height="wrap_content"
                 android:layout_marginTop="8dp"
                 android:text="Weigth:"
-                android:textSize="16sp"
+                android:textColor="@color/black"
+                android:textSize="18sp"
                 android:textStyle="bold"
+                app:layout_constraintBottom_toTopOf="@+id/tvLabelHeigthPokemonDetails"
                 app:layout_constraintStart_toStartOf="@+id/tvLabelIdPokemonDetails"
                 app:layout_constraintTop_toBottomOf="@+id/tvLabelIdPokemonDetails" />
 
@@ -71,6 +78,7 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_marginStart="4dp"
+                android:textColor="@color/black"
                 android:textSize="16sp"
                 app:layout_constraintBottom_toBottomOf="@+id/tvLabelWeigthPokemonDetails"
                 app:layout_constraintStart_toEndOf="@+id/tvLabelWeigthPokemonDetails"
@@ -83,8 +91,10 @@
                 android:layout_height="wrap_content"
                 android:layout_marginTop="8dp"
                 android:text="Heigth:"
-                android:textSize="16sp"
+                android:textColor="@color/black"
+                android:textSize="18sp"
                 android:textStyle="bold"
+                app:layout_constraintBottom_toBottomOf="parent"
                 app:layout_constraintStart_toStartOf="@+id/tvLabelWeigthPokemonDetails"
                 app:layout_constraintTop_toBottomOf="@+id/tvLabelWeigthPokemonDetails" />
 
@@ -93,6 +103,7 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_marginStart="4dp"
+                android:textColor="@color/black"
                 android:textSize="16sp"
                 app:layout_constraintBottom_toBottomOf="@+id/tvLabelHeigthPokemonDetails"
                 app:layout_constraintStart_toEndOf="@+id/tvLabelHeigthPokemonDetails"
@@ -108,6 +119,7 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginTop="16dp"
+        android:textColor="@color/black"
         android:textSize="26sp"
         android:textStyle="bold"
         app:layout_constraintEnd_toEndOf="parent"
@@ -133,6 +145,7 @@
             android:layout_height="match_parent"
             android:layout_weight="1"
             android:background="@drawable/rounded_corner_text_view"
+            android:padding="8dp"
             android:textAlignment="center"
             android:textColor="@color/off_white"
             android:textSize="18sp"
@@ -145,9 +158,11 @@
             android:layout_height="match_parent"
             android:layout_weight="1"
             android:background="@drawable/rounded_corner_text_view"
+            android:padding="8dp"
             android:textAlignment="center"
             android:textColor="@color/off_white"
             android:textSize="18sp"
+
             android:textStyle="bold"
             tools:text="Poison" />
     </LinearLayout>
@@ -157,6 +172,168 @@
         android:layout_height="wrap_content"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/llPokemonTypes"></ScrollView>
+        app:layout_constraintTop_toBottomOf="@+id/llPokemonTypes">
+
+        <androidx.constraintlayout.widget.ConstraintLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="16dp"
+            android:background="@drawable/bg_rounded_corner_stats_details_fragment"
+            android:paddingHorizontal="16dp"
+            android:paddingVertical="16dp">
+
+            <TextView
+                android:id="@+id/tvLabelHpDetails"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="HP:"
+                android:textColor="@color/red_dark"
+                android:textSize="22sp"
+                android:textStyle="bold"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toTopOf="parent" />
+
+            <TextView
+                android:id="@+id/tvHpDetails"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="6dp"
+                android:text="0"
+                android:textColor="@color/red_dark"
+                android:textSize="22sp"
+                android:textStyle="bold"
+                app:layout_constraintBottom_toBottomOf="@+id/tvLabelHpDetails"
+                app:layout_constraintStart_toEndOf="@+id/tvLabelHpDetails"
+                app:layout_constraintTop_toTopOf="@+id/tvLabelHpDetails"
+                tools:text="80" />
+
+            <ProgressBar
+                android:id="@+id/progressBarHpDetails"
+                style="?android:attr/progressBarStyleHorizontal"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="6dp"
+                android:progress="100"
+                android:progressTint="@color/red_dark"
+                app:layout_constraintBottom_toBottomOf="@+id/tvHpDetails"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toEndOf="@+id/tvHpDetails"
+                app:layout_constraintTop_toTopOf="@+id/tvHpDetails" />
+
+            <TextView
+                android:id="@+id/tvDefenceLabelDetails"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="DEF:"
+                android:textColor="@color/blue_dark"
+                android:textSize="22sp"
+                android:textStyle="bold"
+                app:layout_constraintStart_toStartOf="@+id/tvLabelHpDetails"
+                app:layout_constraintTop_toBottomOf="@+id/tvLabelHpDetails" />
+
+            <TextView
+                android:id="@+id/tvDefenceDetails"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="6dp"
+                android:text="0"
+                android:textColor="@color/blue_dark"
+                android:textSize="22sp"
+                android:textStyle="bold"
+                app:layout_constraintBottom_toBottomOf="@+id/tvDefenceLabelDetails"
+                app:layout_constraintStart_toEndOf="@+id/tvDefenceLabelDetails"
+                app:layout_constraintTop_toTopOf="@+id/tvDefenceLabelDetails"
+                tools:text="80" />
+
+            <ProgressBar
+                android:id="@+id/progressBarDefenceDetails"
+                style="?android:attr/progressBarStyleHorizontal"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="6dp"
+                android:progress="100"
+                android:progressTint="@color/blue_dark"
+                app:layout_constraintBottom_toBottomOf="@+id/tvDefenceDetails"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toEndOf="@+id/tvDefenceDetails"
+                app:layout_constraintTop_toTopOf="@+id/tvDefenceDetails" />
+
+            <TextView
+                android:id="@+id/tvAttackLabelDetails"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="ATK:"
+                android:textColor="@color/type_fire"
+                android:textSize="22sp"
+                android:textStyle="bold"
+                app:layout_constraintStart_toStartOf="@+id/tvDefenceLabelDetails"
+                app:layout_constraintTop_toBottomOf="@+id/tvDefenceLabelDetails" />
+
+            <TextView
+                android:id="@+id/tvAttackDetails"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="6dp"
+                android:text="0"
+                android:textColor="@color/type_fire"
+                android:textSize="22sp"
+                android:textStyle="bold"
+                app:layout_constraintBottom_toBottomOf="@+id/tvAttackLabelDetails"
+                app:layout_constraintStart_toEndOf="@+id/tvAttackLabelDetails"
+                app:layout_constraintTop_toTopOf="@+id/tvAttackLabelDetails"
+                tools:text="80" />
+
+            <ProgressBar
+                android:id="@+id/progressBarAttackDetails"
+                style="?android:attr/progressBarStyleHorizontal"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="6dp"
+                android:progress="100"
+                android:progressTint="@color/type_fire"
+                app:layout_constraintBottom_toBottomOf="@+id/tvAttackDetails"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toEndOf="@+id/tvAttackDetails"
+                app:layout_constraintTop_toTopOf="@+id/tvAttackDetails" />
+
+            <TextView
+                android:id="@+id/tvSpeedLabelDetails"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="SPD:"
+                android:textColor="@color/type_eletric"
+                android:textSize="22sp"
+                android:textStyle="bold"
+                app:layout_constraintStart_toStartOf="@+id/tvAttackLabelDetails"
+                app:layout_constraintTop_toBottomOf="@+id/tvAttackLabelDetails" />
+
+            <TextView
+                android:id="@+id/tvSpeedDetails"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="6dp"
+                android:text="0"
+                android:textColor="@color/type_eletric"
+                android:textSize="22sp"
+                android:textStyle="bold"
+                app:layout_constraintBottom_toBottomOf="@+id/tvSpeedLabelDetails"
+                app:layout_constraintStart_toEndOf="@+id/tvSpeedLabelDetails"
+                app:layout_constraintTop_toTopOf="@+id/tvSpeedLabelDetails"
+                tools:text="80" />
+
+            <ProgressBar
+                android:id="@+id/progressBarSpeedDetails"
+                style="?android:attr/progressBarStyleHorizontal"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="6dp"
+                android:progressTint="@color/type_eletric"
+                app:layout_constraintBottom_toBottomOf="@+id/tvSpeedDetails"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toEndOf="@+id/tvSpeedDetails"
+                app:layout_constraintTop_toTopOf="@+id/tvSpeedDetails"
+                tools:progress="80" />
+        </androidx.constraintlayout.widget.ConstraintLayout>
+    </ScrollView>
 
 </androidx.constraintlayout.widget.ConstraintLayout>

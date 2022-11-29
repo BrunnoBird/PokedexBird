@@ -1,18 +1,13 @@
 package com.bgaprojects.pokebird.util
 
-import android.content.Context
-import android.graphics.Color
 import android.util.Log
-import androidx.core.content.ContextCompat
 import com.bgaprojects.pokebird.R
-import com.bgaprojects.pokebird.data.model.pokemon.PokemonListResultModel
 import com.bgaprojects.pokebird.data.model.pokemon.PokemonResult
 import com.bgaprojects.pokebird.data.model.pokemon.PokemonResultModel
 import com.bgaprojects.pokebird.data.model.pokemon.TypeX
-import retrofit2.Response
 import java.util.*
 
-fun extractIdPokemon(pokemonResult: PokemonResult): Long {
+fun extractIdPokemonForFetchDetails(pokemonResult: PokemonResult): Long {
     val number = pokemonResult.url.replace("https://pokeapi.co/api/v2/pokemon/", "")
         .replace("/", "").toLong()
     return number

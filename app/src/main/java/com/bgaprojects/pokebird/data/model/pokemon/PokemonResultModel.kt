@@ -10,12 +10,10 @@ data class PokemonResultModel(
     val name: String,
     @SerializedName("types")
     val types: List<Type>,
-    @SerializedName("defense")
-    val defense: Int? = null,
-    @SerializedName("hp")
-    val hp: Int? = null,
-    @SerializedName("weigth")
+    @SerializedName("weight")
     var weight: Int,
-    @SerializedName("heigth")
+    @SerializedName("height")
     var height: Int,
-): Serializable
+    @SerializedName("stats")
+    val stats: List<PokemonStats>,
+) : Serializable

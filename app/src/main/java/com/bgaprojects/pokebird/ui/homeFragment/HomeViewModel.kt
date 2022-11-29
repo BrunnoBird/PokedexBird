@@ -6,7 +6,7 @@ import com.bgaprojects.pokebird.data.model.pokemon.PokemonListResultModel
 import com.bgaprojects.pokebird.data.model.pokemon.PokemonResultModel
 import com.bgaprojects.pokebird.repository.PokemonRepository
 import com.bgaprojects.pokebird.ui.state.ResourceState
-import com.bgaprojects.pokebird.util.extractIdPokemon
+import com.bgaprojects.pokebird.util.extractIdPokemonForFetchDetails
 import dagger.hilt.android.lifecycle.HiltViewModel
 import kotlinx.coroutines.flow.MutableStateFlow
 import kotlinx.coroutines.flow.StateFlow
@@ -16,13 +16,13 @@ import java.io.IOException
 import javax.inject.Inject
 
 @HiltViewModel
-class homeViewModel @Inject constructor(
+class HomeViewModel @Inject constructor(
     private val repository: PokemonRepository
 ) : ViewModel() {
 
-    private var _list =
+    private var _pokemonsListState =
         MutableStateFlow<ResourceState<List<PokemonResultModel>>>(ResourceState.Loading())
-    val list: StateFlow<ResourceState<List<PokemonResultModel>>> = _list
+    val pokemonsListState: StateFlow<ResourceState<List<PokemonResultModel>>> = _pokemonsListState
 
     private val _pokemonResult =
         MutableStateFlow<ResourceState<PokemonListResultModel
@@ -37,40 +37,45 @@ class homeViewModel @Inject constructor(
     }
 
     private suspend fun safeFetch() {
+        val pokemonsListDetails: MutableList<PokemonResultModel> = mutableListOf()
+
         try {
-            val response = repository.list()
-            _pokemonResult.value = handleResponsePokemonResult(response)
-
-            try {
-                _pokemonResult.value.data?.results.let { it ->
-                    var pokemonsList: MutableList<PokemonResultModel> = mutableListOf()
-
-                    it?.map { pokemonResultModel ->
-                        val number = extractIdPokemon(pokemonResultModel)
-
-                        val pokemonApiResponse = repository.listInfo(number)
-                        val pokemons = handleResponsePokemonApiResult(pokemonApiResponse)
-                        pokemons?.let {
-                            it.data?.let {
-                                pokemonsList.add(it)
-                            }
-                        }
-                    }
-                    _list.value = ResourceState.Success(pokemonsList)
-                }
-            } catch (t: Throwable) {
-
-            } catch (t: Throwable) {
-            }
-
+            fetchListPokemonsWithoutDetails()
+            fetchListPokemonsDetails(pokemonsListDetails)
         } catch (t: Throwable) {
             when (t) {
-                is IOException -> _list.value =
+                is IOException -> _pokemonsListState.value =
                     ResourceState.Error("Erro de conexão com a internet")
-                else -> _list.value =
+                else -> _pokemonsListState.value =
                     ResourceState.Error("Falha na conversão de dados")
             }
         }
+    }
+
+    private suspend fun fetchListPokemonsDetails(pokemonsListDetails: MutableList<PokemonResultModel>) {
+        _pokemonResult.value.data?.results.let { stateListPokemonWithoutDetails ->
+            stateListPokemonWithoutDetails?.map { pokemonResultModel ->
+
+                val idPokemon = extractIdPokemonForFetchDetails(pokemonResultModel)
+                val pokemonDetailsResponse = repository.getPokemonsDetails(idPokemon)
+                val pokemonsListState =
+                    handleResponsePokemonApiResult(pokemonDetailsResponse)
+
+                pokemonsListState.also {
+                    it.data?.let { pokemonDetailed ->
+                        pokemonsListDetails.add(
+                            pokemonDetailed
+                        )
+                    }
+                }
+            }
+            _pokemonsListState.value = ResourceState.Success(pokemonsListDetails)
+        }
+    }
+
+    private suspend fun fetchListPokemonsWithoutDetails() {
+        val pokemonsListResponse = repository.listPokemons()
+        _pokemonResult.value = handleResponsePokemonResult(pokemonsListResponse)
     }
 
     private fun handleResponsePokemonApiResult(pokemonApiResponse: Response<PokemonResultModel>): ResourceState<PokemonResultModel> {
@@ -92,7 +97,7 @@ class homeViewModel @Inject constructor(
     }
 
     fun filterByName(name: CharSequence): List<PokemonResultModel> {
-        val listFiltered = list.value.data?.filter {
+        val listFiltered = pokemonsListState.value.data?.filter {
             it.name.contains(name.toString().lowercase()) ?: false
         }
 
