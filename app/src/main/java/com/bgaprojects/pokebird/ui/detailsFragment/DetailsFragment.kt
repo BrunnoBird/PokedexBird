@@ -2,16 +2,13 @@ package com.bgaprojects.pokebird.ui.detailsFragment
 
 import android.annotation.SuppressLint
 import android.os.Bundle
-import android.view.*
-import android.widget.Toast
-import androidx.appcompat.app.AppCompatActivity
+import android.view.LayoutInflater
+import android.view.View
+import android.view.ViewGroup
 import androidx.core.content.ContextCompat
-import androidx.core.view.MenuProvider
 import androidx.fragment.app.viewModels
-import androidx.lifecycle.Lifecycle
 import androidx.navigation.fragment.findNavController
 import androidx.navigation.fragment.navArgs
-import com.bgaprojects.pokebird.R
 import com.bgaprojects.pokebird.data.model.pokemon.PokemonResultModel
 import com.bgaprojects.pokebird.databinding.FragmentDetailsBinding
 import com.bgaprojects.pokebird.ui.base.BaseFragment
