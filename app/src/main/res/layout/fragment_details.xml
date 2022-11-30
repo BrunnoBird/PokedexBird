@@ -7,6 +7,13 @@
     android:background="@color/yellow_dark"
     android:padding="8dp">
 
+    <include
+        android:id="@+id/tbFragmentDetails"
+        layout="@layout/toolbar_details_fragment"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+
     <androidx.cardview.widget.CardView
         android:id="@+id/cvPokemonDetails"
         android:layout_width="match_parent"
@@ -16,7 +23,7 @@
         app:cardCornerRadius="8dp"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent">
+        app:layout_constraintTop_toBottomOf="@+id/tbFragmentDetails">
 
         <androidx.constraintlayout.widget.ConstraintLayout
             android:layout_width="match_parent"
