@@ -6,4 +6,4 @@ import java.io.Serializable
 data class Type(
     @SerializedName("type")
     val type: TypeX
-): Serializable
+) : Serializable

@@ -6,14 +6,21 @@ import java.io.Serializable
 data class PokemonResultModel(
     @SerializedName("id")
     val id: Long,
+
     @SerializedName("name")
-    val name: String,
-    @SerializedName("types")
-    val types: List<Type>,
+    val name: String = "",
+
     @SerializedName("weight")
     var weight: Int,
+
     @SerializedName("height")
     var height: Int,
+
     @SerializedName("stats")
     val stats: List<PokemonStats>,
-) : Serializable
+
+    @SerializedName("types")
+    val types: List<Type>,
+
+    ) : Serializable {
+}

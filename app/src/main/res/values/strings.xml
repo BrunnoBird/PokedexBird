@@ -3,4 +3,19 @@
     <string name="item_pokemon_image_description">Imagem de um Pokemon</string>
 <!-- TODO: Remove or change this placeholder text -->
     <string name="hello_blank_fragment">Hello blank fragment</string>
+    <string name="img_description_pokemon">Imagem do Pokemon selecionado</string>
+    <string name="id_pokemon_details">ID:</string>
+    <string name="weigth_pokemon_details">Weigth:</string>
+    <string name="heigth_pokemon_details">Heigth:</string>
+    <string name="hp_pokemon_details">HP:</string>
+    <string name="def_pokemon_details">DEF:</string>
+    <string name="atk_pokemon_details">ATK:</string>
+    <string name="spd_pokemon_details">SPD:</string>
+    <string name="back_button_toolbar_details">Botão voltar</string>
+    <string name="save_pokemon_favorite_details_toolbar">Salvar pokemon nos favoritos</string>
+    <string name="delete_pokemon_favorite_toolbar">Deletar pokemon dos favoritos</string>
+    <string name="app_logo">Logo do aplicativo</string>
+    <string name="app_name_main">Poke-Bird</string>
+    <string name="input_search_pokemon_main">Ícone do campo de busca</string>
+    <string name="hint_input_pokemon_main">Pesquisar</string>
 </resources>

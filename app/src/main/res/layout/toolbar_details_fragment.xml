@@ -14,28 +14,9 @@
         android:layout_width="30dp"
         android:layout_height="30dp"
         android:background="@android:color/transparent"
+        android:contentDescription="@string/back_button_toolbar_details"
         android:src="@drawable/ic_arrow_back"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent" />
-
-    <ImageView
-        android:id="@+id/ivSavePokemonDetails"
-        android:layout_width="30dp"
-        android:layout_height="30dp"
-        android:layout_marginEnd="16dp"
-        android:src="@drawable/pokeball_img"
-        app:layout_constraintBottom_toBottomOf="@+id/ivDeleteDetails"
-        app:layout_constraintEnd_toStartOf="@+id/ivDeleteDetails"
-        app:layout_constraintTop_toTopOf="@+id/ivDeleteDetails" />
-
-    <ImageButton
-        android:id="@+id/ivDeleteDetails"
-        android:layout_width="30dp"
-        android:layout_height="30dp"
-        android:background="@android:color/transparent"
-        android:src="@drawable/ic_delete"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
 </androidx.constraintlayout.widget.ConstraintLayout>
