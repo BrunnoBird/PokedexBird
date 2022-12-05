@@ -7,7 +7,7 @@ Projeto simples de consumo de uma API: https://pokeapi.co/docs/v2 , onde a sua f
 
 ## Screenshots
 
-![App Screenshot](./pokeburd-shots.png.png)
+![App Screenshot](./pokeburd-shots.png)
 
 
 ## Stack utilizada
