@@ -12,7 +12,7 @@ Projeto simples de consumo de uma API: https://pokeapi.co/docs/v2 , onde a sua f
 
 ## Stack utilizada
 
-**Mobile:** MVVM, Flow, Coroutines, Repository Pattern, Kotlin, Navigation Component, Safe Args, Hilt
+**Mobile:** MVVM, Flow, Coroutines, Repository Pattern, Kotlin, Navigation Component, Safe Args, Hilt, Lottie(Animation)
 
 ## Critérios de avaliação:
 *   Padrões arquiteturais utilizados.
